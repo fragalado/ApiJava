@@ -4,8 +4,6 @@ package edu.arquetipo.apiJava.daos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.arquetipo.apiJava.dtos.Usuario;
-
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
 	// Este método no hace falta que lo implementemos porque la convención de nombres

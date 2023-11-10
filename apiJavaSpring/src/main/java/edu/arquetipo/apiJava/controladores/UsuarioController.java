@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.arquetipo.apiJava.daos.Usuario;
 import edu.arquetipo.apiJava.daos.UsuarioRepository;
-import edu.arquetipo.apiJava.dtos.Usuario;
 import edu.arquetipo.apiJava.utiles.ResourceNotFoundException;
 
 // Definimos el controlador REST para Usuario
@@ -27,6 +27,13 @@ public class UsuarioController {
 	@GetMapping
 	public List<Usuario> obtenerUsuarios(){
 		return usuarioRepository.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public Usuario obtenerUsuarioPorId(@PathVariable Long id){
+		return usuarioRepository
+				.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
 	}
 	
 	@PostMapping

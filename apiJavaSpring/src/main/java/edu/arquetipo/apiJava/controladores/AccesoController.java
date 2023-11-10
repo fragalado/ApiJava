@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.arquetipo.apiJava.daos.Acceso;
 import edu.arquetipo.apiJava.daos.AccesoRepository;
-import edu.arquetipo.apiJava.dtos.Acceso;
 import edu.arquetipo.apiJava.utiles.ResourceNotFoundException;
 
 @RestController
@@ -26,6 +26,13 @@ public class AccesoController {
 	@GetMapping
 	public List<Acceso> obtenerAccesos() {
 		return accesoRepository.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public Acceso obtenerAccesoPorId(@PathVariable Long id) {
+		return accesoRepository
+				.findById(id)
+				.orElseThrow(()-> new ResourceNotFoundException("Acceso no encontrado"));
 	}
 
 	@PostMapping

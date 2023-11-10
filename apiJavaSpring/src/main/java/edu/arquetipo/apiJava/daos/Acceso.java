@@ -1,4 +1,4 @@
-package edu.arquetipo.apiJava.dtos;
+package edu.arquetipo.apiJava.daos;
 
 import java.util.List;
 
