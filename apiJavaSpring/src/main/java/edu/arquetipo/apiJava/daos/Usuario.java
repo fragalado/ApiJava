@@ -67,11 +67,10 @@ public class Usuario {
 		super();
 	}
 	
-	public Usuario(Long id_usuario, String dni_usuario, String nombre_usuario, String apellidos_usuario, String tlf_usuario,
+	public Usuario(String dni_usuario, String nombre_usuario, String apellidos_usuario, String tlf_usuario,
 			String email_usuario, String clave_usuario, boolean estaBloqueado_usuario, Calendar fch_fin_bloqueo_usuario,
 			Calendar fch_alta_usuario, Calendar fch_baja_usuario, Acceso acceso) {
 		super();
-		this.id_usuario = id_usuario;
 		this.dni_usuario = dni_usuario;
 		this.nombre_usuario = nombre_usuario;
 		this.apellidos_usuario = apellidos_usuario;
@@ -136,10 +135,6 @@ public class Usuario {
 	}
 	
 	// Setter
-	
-	public void setId_usuario(long id_usuario) {
-		this.id_usuario = id_usuario;
-	}
 	
 	public void setDni_usuario(String dni_usuario) {
 		this.dni_usuario = dni_usuario;
