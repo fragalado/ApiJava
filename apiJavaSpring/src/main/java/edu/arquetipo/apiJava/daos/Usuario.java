@@ -136,10 +136,6 @@ public class Usuario {
 	
 	// Setter
 	
-	public void setId_usuario(long id_usuario) {
-		this.id_usuario = id_usuario;
-	}
-	
 	public void setDni_usuario(String dni_usuario) {
 		this.dni_usuario = dni_usuario;
 	}
