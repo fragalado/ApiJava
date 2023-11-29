@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.arquetipo.apiJava.daos.Acceso;
+import edu.arquetipo.apiJava.daos.AccesoRepository;
 import edu.arquetipo.apiJava.daos.Usuario;
 import edu.arquetipo.apiJava.daos.UsuarioRepository;
 import edu.arquetipo.apiJava.utiles.ResourceNotFoundException;
@@ -23,6 +25,9 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private AccesoRepository accesoRepository;
 	
 	@GetMapping
 	public List<Usuario> obtenerUsuarios(){
@@ -37,8 +42,10 @@ public class UsuarioController {
 	}
 	
 	@PostMapping
-	public Usuario crearUsuario(@RequestBody Usuario usuario) {
-		return usuarioRepository.save(usuario);
+	public void crearUsuario(String nombreUsuario, String apellidosUsuario, String dniUsuario, String emailUsuario, String tlfUsuario, String claveUsuario) {
+		// Creamos un usuario y lo devolvemos
+		Acceso acc = accesoRepository.findById(1L).orElseThrow(() -> new ResourceNotFoundException("Acceso no encontrado"));
+		usuarioRepository.save(new Usuario(dniUsuario, nombreUsuario, apellidosUsuario, tlfUsuario, emailUsuario, claveUsuario, false, null, null, null, acc));
 	}
 	
 	@PutMapping("/{id}")
