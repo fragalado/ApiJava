@@ -43,6 +43,10 @@ public class Acceso {
 	
 	// Getter
 	
+	public long getId_acceso() {
+		return id_acceso;
+	}
+	
 	public String getCodigo_acceso() {
 		return codigo_acceso;
 	}

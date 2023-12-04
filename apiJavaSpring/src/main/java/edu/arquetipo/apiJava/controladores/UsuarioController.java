@@ -42,10 +42,15 @@ public class UsuarioController {
 	}
 	
 	@PostMapping
-	public void crearUsuario(String nombreUsuario, String apellidosUsuario, String dniUsuario, String emailUsuario, String tlfUsuario, String claveUsuario) {
+	public void crearUsuario(@RequestBody Usuario usuario) {
 		// Creamos un usuario y lo devolvemos
 		Acceso acc = accesoRepository.findById(1L).orElseThrow(() -> new ResourceNotFoundException("Acceso no encontrado"));
-		usuarioRepository.save(new Usuario(dniUsuario, nombreUsuario, apellidosUsuario, tlfUsuario, emailUsuario, claveUsuario, false, null, null, null, acc));
+		
+		// Le añadimos al usuario el acceso
+		usuario.setAcceso(acc);
+		
+		// Lo guardamos
+		usuarioRepository.save(usuario);
 	}
 	
 	@PutMapping("/{id}")
